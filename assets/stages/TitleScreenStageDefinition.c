@@ -32,9 +32,9 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntityDefinition COLORS_BAR_8_EN;
-extern EntityDefinition COLORS_TEST_8_EN;
-extern EntityDefinition COLORS_TEST_16_EN;
+extern EntityDefinition BACKGROUND_EN;
+extern EntityDefinition COPYRIGHT_EN;
+extern EntityDefinition LOGO_EN;
 extern EntityDefinition TRANSITION_LAYER_AE;
 
 
@@ -42,18 +42,18 @@ extern EntityDefinition TRANSITION_LAYER_AE;
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
-PositionedEntityROMDef TRANSPARENCY_STAGE_ST_ENTITIES[] =
+PositionedEntityROMDef TITLE_SCREEN_STAGE_ST_ENTITIES[] =
 {
-	{&COLORS_BAR_8_EN, 		{192, 112,  0, 0}, 0, NULL, NULL, NULL, false},
-	//{&COLORS_TEST_8_EN, 	{192, 112,  0, 0}, 0, NULL, NULL, NULL, false},
-	//{&COLORS_TEST_16_EN, 	{192, 112,  0, 0}, 0, NULL, NULL, NULL, false},
+	{&BACKGROUND_EN, 		{192, 112,  0, 0}, 0, NULL, NULL, NULL, false},
+	{&LOGO_EN, 				{192,  48,  0, 0}, 0, NULL, NULL, NULL, false},
+	{&COPYRIGHT_EN, 		{192, 207,  0, 0}, 0, NULL, NULL, NULL, false},
 
 	{&TRANSITION_LAYER_AE, 	{192, 112, -1, 0}, 0, "TRNSLYR", NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedEntityROMDef TRANSPARENCY_STAGE_ST_UI_ENTITIES[] =
+PositionedEntityROMDef TITLE_SCREEN_STAGE_ST_UI_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -63,7 +63,7 @@ PositionedEntityROMDef TRANSPARENCY_STAGE_ST_UI_ENTITIES[] =
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMDef TRANSPARENCY_STAGE_ST =
+StageROMDef TITLE_SCREEN_STAGE_ST =
 {
 	// allocator
 	__TYPE(Stage),
@@ -258,12 +258,12 @@ StageROMDef TRANSPARENCY_STAGE_ST =
 	{
 		// ui
 		{
-			TRANSPARENCY_STAGE_ST_UI_ENTITIES,
+			TITLE_SCREEN_STAGE_ST_UI_ENTITIES,
 			__TYPE(UiContainer),
 		},
 
 		// children
-		TRANSPARENCY_STAGE_ST_ENTITIES,
+		TITLE_SCREEN_STAGE_ST_ENTITIES,
 	},
 
 	// post processing effects

@@ -19,33 +19,27 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#ifndef TITLE_SCREEN_STATE_H_
+#define TITLE_SCREEN_STATE_H_
+
 
 //---------------------------------------------------------------------------------------------------------
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Game.h>
-#include <AdjustmentScreenState.h>
-#include <TitleScreenState.h>
+#include <GameState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											GAME'S MAIN LOOP
+// 											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-int main(void)
+dynamic_singleton class TitleScreenState : GameState
 {
-	// initialize components
-	/*
-	SplashScreenState::setNextState(
-		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
-		GameState::safeCast(TitleScreenState::getInstance())
-	);
-	*/
-
-	// start the game
-	Game::start(Game::getInstance(), GameState::safeCast(TitleScreenState::getInstance()));
-
-	// end program
-	return true;
+	static TitleScreenState getInstance();
+	override void enter(void* owner);
+	override void processUserInput(UserInput userInput);
 }
+
+
+#endif
