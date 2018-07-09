@@ -21,31 +21,28 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Game.h>
-#include <AdjustmentScreenState.h>
-#include <ColorDemoState.h>
+#include <VIPManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											GAME'S MAIN LOOP
+//												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-int main(void)
+BrightnessRepeatROMDef GRADIENT_BRIGHTNESS_REPEAT =
 {
-	// initialize components
-	/*
-	SplashScreenState::setNextState(
-		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
-		GameState::safeCast(ColorDemoState::getInstance())
-	);
-	*/
+	// mirror definition?
+	false,
 
-	// start the game
-	Game::start(Game::getInstance(), GameState::safeCast(ColorDemoState::getInstance()));
-
-	// end program
-	return true;
-}
+	// brightness repeat values
+	{
+		15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,  0,
+		 0,  0,  0,  0,  1,  1,  1,  1,  2,  2,  2,  2,  3,  3,  3,  3,
+		 4,  4,  4,  4,  5,  5,  5,  5,  6,  6,  6,  6,  7,  7,  7,  7,
+		 8,  8,  8,  8,  9,  9,  9,  9, 10, 10, 10, 10, 11, 11, 11, 11,
+		12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 15,
+		15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+	}
+};

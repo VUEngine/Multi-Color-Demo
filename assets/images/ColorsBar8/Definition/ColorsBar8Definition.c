@@ -67,10 +67,10 @@ TextureROMDef COLORS_BAR_8_1_TX =
 	ColorsBar8_1Map,
 
 	// cols (max 64)
-	26,
+	34,
 
 	// rows (max 64)
-	10,
+	14,
 
 	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
@@ -125,10 +125,10 @@ TextureROMDef COLORS_BAR_8_2_TX =
 	ColorsBar8_2Map,
 
 	// cols (max 64)
-	26,
+	34,
 
 	// rows (max 64)
-	10,
+	14,
 
 	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},

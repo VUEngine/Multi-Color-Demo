@@ -24,50 +24,84 @@
 //												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Entity.h>
-#include <BgmapSprite.h>
+#include <libgccvb.h>
+#include <AnimatedEntity.h>
+#include <BgmapAnimatedSprite.h>
+#include <macros.h>
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern BYTE ColorsBar4Tiles[];
-extern BYTE ColorsBar4Map[];
+extern BYTE CursorsTiles[];
+extern BYTE CursorsMap[];
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef COLORS_BAR_4_CH =
+// a function which defines the frames to play
+AnimationFunctionROMDef CURSORS_DEFAULT_ANIM =
+{
+	// number of frames of this animation function
+	4,
+
+	// frames to play in animation
+	{0, 1, 2, 1},
+
+	// number of cycles a frame of animation is displayed
+	4,
+
+	// whether to play it in loop or not
+	true,
+
+	// method to call on function completion
+	NULL,
+
+	// function's name
+	"Default",
+};
+
+// an animation definition
+AnimationDescriptionROMDef CURSORS_ANIM =
+{
+	// animation functions
+	{
+		(AnimationFunction*)&CURSORS_DEFAULT_ANIM,
+		NULL,
+	}
+};
+
+CharSetROMDef CURSORS_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
 	// __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-	6,
+	96,
 
 	// allocation type
 	// (__ANIMATED_SINGLE, __ANIMATED_SINGLE_OPTIMIZED, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
-	__NOT_ANIMATED,
+	__ANIMATED_SHARED,
 
 	// char definition
-	ColorsBar4Tiles,
+	CursorsTiles,
 };
 
-TextureROMDef COLORS_BAR_4_TX =
+TextureROMDef CURSORS_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_BAR_4_CH,
+	(CharSetDefinition*)&CURSORS_CH,
 
 	// bgmap definition
-	ColorsBar4Map,
+	CursorsMap,
 
 	// cols (max 64)
-	34,
+	48,
 
 	// rows (max 64)
-	14,
+	2,
 
 	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
@@ -84,14 +118,14 @@ TextureROMDef COLORS_BAR_4_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_BAR_4_SPRITE =
+BgmapSpriteROMDef CURSORS_SPRITE =
 {
 	{
 		// sprite's type
-		__TYPE(BgmapSprite),
+		__TYPE(BgmapAnimatedSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_BAR_4_TX,
+		(TextureDefinition*)&CURSORS_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -111,30 +145,38 @@ BgmapSpriteROMDef COLORS_BAR_4_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const COLORS_BAR_4_SPRITES[] =
+BgmapSpriteROMDef* const CURSORS_SPRITES[] =
 {
-	&COLORS_BAR_4_SPRITE,
+	&CURSORS_SPRITE,
 	NULL
 };
 
-EntityROMDef COLORS_BAR_4_EN =
+AnimatedEntityROMDef CURSORS_AE =
 {
-	// class allocator
-	__TYPE(Entity),
+	{
+		// class allocator
+		__TYPE(AnimatedEntity),
 
-	// sprites
-	(SpriteROMDef**)COLORS_BAR_4_SPRITES,
+		// sprites
+		(SpriteROMDef**)CURSORS_SPRITES,
 
-	// collision shapes
-	(ShapeDefinition*)NULL,
+		// collision shapes
+		(ShapeDefinition*)NULL,
 
-	// size
-	// if 0, width and height will be inferred from the first sprite's texture's size
-	{0, 0, 0},
+		// size
+		// if 0, width and height will be inferred from the first sprite's texture's size
+		{0, 0, 0},
 
-	// gameworld's character's type
-	kNoType,
+		// gameworld's character's type
+		kNoType,
 
-	// physical specification
-	(PhysicalSpecification*)NULL,
+		// physical specification
+		(PhysicalSpecification*)NULL,
+	},
+
+	// pointer to the animation definition for the item
+	(AnimationDescription*)&CURSORS_ANIM,
+
+	// initial animation
+	"Default",
 };

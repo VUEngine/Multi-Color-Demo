@@ -19,33 +19,39 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#ifndef COLOR_DEMO_STATE_H_
+#define COLOR_DEMO_STATE_H_
+
 
 //---------------------------------------------------------------------------------------------------------
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Game.h>
-#include <AdjustmentScreenState.h>
-#include <ColorDemoState.h>
+#include <GameState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											GAME'S MAIN LOOP
+//												MACROS
 //---------------------------------------------------------------------------------------------------------
 
-int main(void)
+#define MAX_MODE	2
+
+
+//---------------------------------------------------------------------------------------------------------
+// 											CLASS'S DECLARATION
+//---------------------------------------------------------------------------------------------------------
+
+dynamic_singleton class ColorDemoState : GameState
 {
-	// initialize components
-	/*
-	SplashScreenState::setNextState(
-		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
-		GameState::safeCast(ColorDemoState::getInstance())
-	);
-	*/
+	Entity cbColTabEntity;
+	Entity cbDitherEntity;
+	Entity cbTranspEntity;
+	u8 mode;
 
-	// start the game
-	Game::start(Game::getInstance(), GameState::safeCast(ColorDemoState::getInstance()));
-
-	// end program
-	return true;
+	static ColorDemoState getInstance();
+	override void enter(void* owner);
+	override void processUserInput(UserInput userInput);
 }
+
+
+#endif

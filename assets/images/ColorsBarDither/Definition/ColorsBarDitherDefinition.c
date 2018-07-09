@@ -32,36 +32,36 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern BYTE ColorsBar4Tiles[];
-extern BYTE ColorsBar4Map[];
+extern BYTE ColorsBarDitherTiles[];
+extern BYTE ColorsBarDitherMap[];
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef COLORS_BAR_4_CH =
+CharSetROMDef COLORS_BAR_DITHER_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
 	// __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-	6,
+	34,
 
 	// allocation type
 	// (__ANIMATED_SINGLE, __ANIMATED_SINGLE_OPTIMIZED, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
 	__NOT_ANIMATED,
 
 	// char definition
-	ColorsBar4Tiles,
+	ColorsBarDitherTiles,
 };
 
-TextureROMDef COLORS_BAR_4_TX =
+TextureROMDef COLORS_BAR_DITHER_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_BAR_4_CH,
+	(CharSetDefinition*)&COLORS_BAR_DITHER_CH,
 
 	// bgmap definition
-	ColorsBar4Map,
+	ColorsBarDitherMap,
 
 	// cols (max 64)
 	34,
@@ -84,14 +84,14 @@ TextureROMDef COLORS_BAR_4_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_BAR_4_SPRITE =
+BgmapSpriteROMDef COLORS_BAR_DITHER_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_BAR_4_TX,
+		(TextureDefinition*)&COLORS_BAR_DITHER_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -111,19 +111,19 @@ BgmapSpriteROMDef COLORS_BAR_4_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const COLORS_BAR_4_SPRITES[] =
+BgmapSpriteROMDef* const COLORS_BAR_DITHER_SPRITES[] =
 {
-	&COLORS_BAR_4_SPRITE,
+	&COLORS_BAR_DITHER_SPRITE,
 	NULL
 };
 
-EntityROMDef COLORS_BAR_4_EN =
+EntityROMDef COLORS_BAR_DITHER_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
 	// sprites
-	(SpriteROMDef**)COLORS_BAR_4_SPRITES,
+	(SpriteROMDef**)COLORS_BAR_DITHER_SPRITES,
 
 	// collision shapes
 	(ShapeDefinition*)NULL,

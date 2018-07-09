@@ -67,7 +67,7 @@ TextureROMDef COLORS_BAR_1_TX =
 	34,
 
 	// rows (max 64)
-	10,
+	14,
 
 	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
