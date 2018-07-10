@@ -1,5 +1,6 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	vuengine-components/states/SplashScreens												\
+COMPONENTS = 	vuengine-components/other/LowBatteryIndicator											\
+				vuengine-components/states/SplashScreens												\
 
 # Compiler's output
 COMPILER_OUTPUT			= c
@@ -13,7 +14,7 @@ COMPILER_OUTPUT			= c
 # tools:				Adds debugging tools without all the debug checking.
 # beta:					Removes most asserts. For testing the performance on hardware.
 # release:				Removes all asserts. For shipping only!
-TYPE					= beta
+TYPE					= debug
 
 # Optimization level
 OPTIMIZATION			= Ofast
@@ -41,7 +42,7 @@ PAD_ROM				 	= 0
 # Dump elf
 # 0:					No dumping.
 # 1:					Dump the assembly code and the memory sections.
-DUMP_ELF				= 0
+DUMP_ELF				= 1
 
 # Sections' usage
 # SRAM's usage

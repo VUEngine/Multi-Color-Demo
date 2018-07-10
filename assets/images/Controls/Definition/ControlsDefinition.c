@@ -1,7 +1,7 @@
 /* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
  * A universal game engine for the Nintendo Virtual Boy
  *
- * Logo (C) 2007, 2018 by Jorge Eremiev<jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
+ * Controls (C) 2007, 2018 by Jorge Eremiev<jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction, including
@@ -9,12 +9,12 @@
  * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
  *
- * The above Logo notice and this permission notice shall be included in all copies or substantial
+ * The above Controls notice and this permission notice shall be included in all copies or substantial
  * portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
  * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR LOGO HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * NO EVENT SHALL THE AUTHORS OR CONTROLS HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
@@ -32,42 +32,42 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern BYTE LogoTiles[];
-extern BYTE LogoMap[];
+extern BYTE ControlsTiles[];
+extern BYTE ControlsMap[];
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef LOGO_CH =
+CharSetROMDef CONTROLS_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
 	// __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-	62,
+	10,
 
 	// allocation type
 	// (__ANIMATED_SINGLE, __ANIMATED_SINGLE_OPTIMIZED, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
 	__NOT_ANIMATED,
 
 	// char definition
-	LogoTiles,
+	ControlsTiles,
 };
 
-TextureROMDef LOGO_TX =
+TextureROMDef CONTROLS_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&LOGO_CH,
+	(CharSetDefinition*)&CONTROLS_CH,
 
 	// bgmap definition
-	LogoMap,
+	ControlsMap,
 
 	// cols (max 64)
-	30,
+	10,
 
 	// rows (max 64)
-	3,
+	2,
 
 	// padding for affine transformations
 	{0, 0},
@@ -84,14 +84,14 @@ TextureROMDef LOGO_TX =
 	false,
 };
 
-BgmapSpriteROMDef LOGO_SPRITE =
+BgmapSpriteROMDef CONTROLS_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&LOGO_TX,
+		(TextureDefinition*)&CONTROLS_TX,
 
 		// transparent
 		false,
@@ -111,19 +111,19 @@ BgmapSpriteROMDef LOGO_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const LOGO_SPRITES[] =
+BgmapSpriteROMDef* const CONTROLS_SPRITES[] =
 {
-	&LOGO_SPRITE,
+	&CONTROLS_SPRITE,
 	NULL
 };
 
-EntityROMDef LOGO_EN =
+EntityROMDef CONTROLS_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
 	// sprites
-	(SpriteROMDef**)LOGO_SPRITES,
+	(SpriteROMDef**)CONTROLS_SPRITES,
 
 	// collision shapes
 	(ShapeDefinition*)NULL,

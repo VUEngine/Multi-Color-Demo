@@ -25,6 +25,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
+#include <LowBatteryIndicatorManager.h>
 #include <AdjustmentScreenState.h>
 #include <ColorDemoState.h>
 
@@ -36,6 +37,7 @@
 int main(void)
 {
 	// initialize components
+	LowBatteryIndicatorManager::setActive(LowBatteryIndicatorManager::getInstance(), true);
 	/*
 	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),

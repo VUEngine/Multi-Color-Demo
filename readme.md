@@ -1,7 +1,27 @@
 Multi Color Demo
 ================
 
-...
+A simple demo demonstrating different ways to display more than 4 colors on the Virtual Boy simultaneously.
+
+**1. Dither**
+
+Ok, this is technically cheating since we do not really show more than 4 colors at once, but still, dithering creates a good *illusion* of a more color rich images, while not relying on any technical trickery.
+
+**2. Column Table**
+
+Through the Column Table's brightness repeat register, it is possible to change the amount of light emitted by the display LEDs (and thus the perceived brightness) every fourth pixel column. 
+
+This allows for a huge range of different shades of red on screen at the same time, but practical use cases are very limited, since you're bound to the grid of 4px columns and always brightness changes affecting the whole screen height. 
+ 
+**3. Blending**
+
+This one exploits the laziness of the human eye to display 8 different colors on screen at the same time, by blending together two images. 
+
+It works by overlaying one image with another, half transparent one. Half transparency is achieved by simply displaying that image only every second frame.
+
+![Blending Composition](blending.png)
+
+Beware that this trick does not work very well on emulators but produces pretty stable colors on real hardware. 
 
 
 LICENSE

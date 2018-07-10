@@ -55,6 +55,7 @@ void ColorDemoState::constructor()
 	this->cbColTabEntity = NULL;
 	this->cbDitherEntity = NULL;
 	this->cbTranspEntity = NULL;
+	this->indexEntity = NULL;
 	this->mode = 0;
 }
 
@@ -78,6 +79,7 @@ void ColorDemoState::enter(void* owner __attribute__ ((unused)))
 	this->cbColTabEntity = Entity::safeCast(Container::getChildByName(Container::safeCast(Game::getStage(Game::getInstance())), "CBColTab", true));
 	this->cbDitherEntity = Entity::safeCast(Container::getChildByName(Container::safeCast(Game::getStage(Game::getInstance())), "CBDither", true));
 	this->cbTranspEntity = Entity::safeCast(Container::getChildByName(Container::safeCast(Game::getStage(Game::getInstance())), "CBTransp", true));
+	this->indexEntity = AnimatedEntity::safeCast(Container::getChildByName(Container::safeCast(Game::getStage(Game::getInstance())), "Index", true));
 
 	// start clocks to start animations
 	GameState::startClocks(GameState::safeCast(this));
@@ -126,6 +128,8 @@ void ColorDemoState::setMode()
 
 			Entity::show(this->cbDitherEntity);
 
+			AnimatedEntity::playAnimation(this->indexEntity, "Dither");
+
 			_vipRegisters[__BRTA] = 32;
 			_vipRegisters[__BRTB] = 64;
 			_vipRegisters[__BRTC] = 32;
@@ -141,6 +145,8 @@ void ColorDemoState::setMode()
 
 			Entity::show(this->cbColTabEntity);
 
+			AnimatedEntity::playAnimation(this->indexEntity, "ColTable");
+
 			_vipRegisters[__BRTA] = 1;
 			_vipRegisters[__BRTB] = 2;
 			_vipRegisters[__BRTC] = 0;
@@ -155,6 +161,8 @@ void ColorDemoState::setMode()
 			Entity::hide(this->cbTranspEntity);
 
 			Entity::show(this->cbTranspEntity);
+
+			AnimatedEntity::playAnimation(this->indexEntity, "Blending");
 
 			_vipRegisters[__BRTA] = 32;
 			_vipRegisters[__BRTB] = 64;

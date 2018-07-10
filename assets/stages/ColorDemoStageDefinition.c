@@ -26,6 +26,7 @@
 #include <Stage.h>
 #include <Printing.h>
 #include <CharSet.h>
+#include <Fonts.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -34,9 +35,12 @@
 
 extern EntityDefinition COLORS_BAR_4_EN;
 extern EntityDefinition COLORS_BAR_8_EN;
+extern EntityDefinition COLORS_BAR_16_EN;
 extern EntityDefinition COLORS_BAR_DITHER_EN;
+extern EntityDefinition CONTROLS_EN;
 extern EntityDefinition COPYRIGHT_EN;
 extern EntityDefinition CURSORS_AE;
+extern EntityDefinition INDEX_AE;
 extern EntityDefinition LOGO_EN;
 
 
@@ -46,12 +50,15 @@ extern EntityDefinition LOGO_EN;
 
 PositionedEntityROMDef COLOR_DEMO_STAGE_ST_ENTITIES[] =
 {
-	{&LOGO_EN, 				{192,  32,  0, 0}, 0, NULL, NULL, NULL, false},
-	{&COLORS_BAR_4_EN, 		{192, 136,  0, 0}, 0, "CBColTab", NULL, NULL, false},
-	{&COLORS_BAR_8_EN, 		{192, 136,  0, 0}, 0, "CBTransp", NULL, NULL, false},
-	{&COLORS_BAR_DITHER_EN, {192, 136,  0, 0}, 0, "CBDither", NULL, NULL, false},
-	{&CURSORS_AE, 			{192, 136,  0, 0}, 0, NULL, NULL, NULL, false},
-	{&COPYRIGHT_EN, 		{192, 214,  0, 0}, 0, NULL, NULL, NULL, false},
+	{&LOGO_EN, 				{192,  32,  0, 0}, 0, NULL, 		NULL, NULL, false},
+	{&INDEX_AE, 			{192,  64,  0, 0}, 0, "Index", 		NULL, NULL, false},
+	{&COLORS_BAR_4_EN, 		{192, 124,  0, 0}, 0, "CBColTab", 	NULL, NULL, false},
+	{&COLORS_BAR_8_EN, 		{192, 124,  0, 0}, 0, "CBTransp", 	NULL, NULL, false},
+	//{&COLORS_BAR_16_EN, 	{192, 124,  0, 0}, 0, "CBTrans2", 	NULL, NULL, false},
+	{&COLORS_BAR_DITHER_EN, {192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
+	{&CURSORS_AE, 			{192, 124,  0, 0}, 0, NULL, 		NULL, NULL, false},
+	//{&CONTROLS_EN, 		{192, 192,  0, 0}, 0, NULL, 		NULL, NULL, false},
+	{&COPYRIGHT_EN, 		{192, 214,  0, 0}, 0, NULL, 		NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -59,6 +66,18 @@ PositionedEntityROMDef COLOR_DEMO_STAGE_ST_ENTITIES[] =
 PositionedEntityROMDef COLOR_DEMO_STAGE_ST_UI_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
+};
+
+
+//---------------------------------------------------------------------------------------------------------
+// 											PRELOAD LISTS
+//---------------------------------------------------------------------------------------------------------
+
+FontROMDef* const COLOR_DEMO_STAGE_ST_FONTS[] =
+{
+	&VUENGINE_FONT,
+
+	NULL
 };
 
 
@@ -245,7 +264,7 @@ StageROMDef COLOR_DEMO_STAGE_ST =
 	// assets
 	{
 		// fonts to preload
-		(FontDefinition**)NULL,
+		(FontDefinition**)COLOR_DEMO_STAGE_ST_FONTS,
 
 		// char sets to preload
 		(CharSetDefinition**)NULL,

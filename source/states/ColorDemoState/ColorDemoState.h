@@ -46,6 +46,7 @@ dynamic_singleton class ColorDemoState : GameState
 	Entity cbColTabEntity;
 	Entity cbDitherEntity;
 	Entity cbTranspEntity;
+	AnimatedEntity indexEntity;
 	u8 mode;
 
 	static ColorDemoState getInstance();
