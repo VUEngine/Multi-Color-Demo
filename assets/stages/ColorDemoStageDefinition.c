@@ -35,8 +35,9 @@
 
 extern EntityDefinition COLORS_BAR_4_EN;
 extern EntityDefinition COLORS_BAR_8_EN;
-extern EntityDefinition COLORS_BAR_16_EN;
 extern EntityDefinition COLORS_BAR_DITHER_EN;
+extern EntityDefinition COLORS_TEST_8_EN;
+extern EntityDefinition COLORS_TEST_16_EN;
 extern EntityDefinition CONTROLS_EN;
 extern EntityDefinition COPYRIGHT_EN;
 extern EntityDefinition CURSORS_AE;
@@ -52,12 +53,13 @@ PositionedEntityROMDef COLOR_DEMO_STAGE_ST_ENTITIES[] =
 {
 	{&LOGO_EN, 				{192,  32,  0, 0}, 0, NULL, 		NULL, NULL, false},
 	{&INDEX_AE, 			{192,  64,  0, 0}, 0, "Index", 		NULL, NULL, false},
+//	{&COLORS_TEST_8_EN, 	{192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
+//	{&COLORS_TEST_16_EN, 	{192, 124,  0, 0}, 0, "CBTransp", 	NULL, NULL, false},
+	{&COLORS_BAR_DITHER_EN,	{192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
 	{&COLORS_BAR_4_EN, 		{192, 124,  0, 0}, 0, "CBColTab", 	NULL, NULL, false},
 	{&COLORS_BAR_8_EN, 		{192, 124,  0, 0}, 0, "CBTransp", 	NULL, NULL, false},
-	//{&COLORS_BAR_16_EN, 	{192, 124,  0, 0}, 0, "CBTrans2", 	NULL, NULL, false},
-	{&COLORS_BAR_DITHER_EN, {192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
 	{&CURSORS_AE, 			{192, 124,  0, 0}, 0, NULL, 		NULL, NULL, false},
-	//{&CONTROLS_EN, 		{192, 192,  0, 0}, 0, NULL, 		NULL, NULL, false},
+//	{&CONTROLS_EN, 			{192, 192,  0, 0}, 0, NULL, 		NULL, NULL, false},
 	{&COPYRIGHT_EN, 		{192, 214,  0, 0}, 0, NULL, 		NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
