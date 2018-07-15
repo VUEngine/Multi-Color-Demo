@@ -38,15 +38,13 @@ int main(void)
 {
 	// initialize components
 	LowBatteryIndicatorManager::setActive(LowBatteryIndicatorManager::getInstance(), true);
-	/*
 	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
 		GameState::safeCast(ColorDemoState::getInstance())
 	);
-	*/
 
 	// start the game
-	Game::start(Game::getInstance(), GameState::safeCast(ColorDemoState::getInstance()));
+	Game::start(Game::getInstance(), GameState::safeCast(AdjustmentScreenState::getInstance()));
 
 	// end program
 	return true;
