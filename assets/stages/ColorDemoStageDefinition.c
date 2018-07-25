@@ -77,8 +77,6 @@ PositionedEntityROMDef COLOR_DEMO_STAGE_ST_UI_ENTITIES[] =
 
 FontROMDef* const COLOR_DEMO_STAGE_ST_FONTS[] =
 {
-	&VUENGINE_FONT,
-
 	NULL
 };
 
