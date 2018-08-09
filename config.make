@@ -1,6 +1,6 @@
-# VUEngine based components that the project uses
-COMPONENTS = 	vuengine-components/other/LowBatteryIndicator											\
-				vuengine-components/states/SplashScreens												\
+# VUEngine based plugins that the project uses
+PLUGINS = 	vuengine/plugins/other/LowPowerIndicator														\
+			vuengine/plugins/states/SplashScreens															\
 
 # Compiler's output
 COMPILER_OUTPUT			= c
