@@ -40,7 +40,7 @@ extern BYTE ControlsMap[];
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef CONTROLS_CH =
+CharSetROMSpec CONTROLS_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -55,10 +55,10 @@ CharSetROMDef CONTROLS_CH =
 	ControlsTiles,
 };
 
-TextureROMDef CONTROLS_TX =
+TextureROMSpec CONTROLS_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&CONTROLS_CH,
+	(CharSetSpec*)&CONTROLS_CH,
 
 	// bgmap definition
 	ControlsMap,
@@ -84,14 +84,14 @@ TextureROMDef CONTROLS_TX =
 	false,
 };
 
-BgmapSpriteROMDef CONTROLS_SPRITE =
+BgmapSpriteROMSpec CONTROLS_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&CONTROLS_TX,
+		(TextureSpec*)&CONTROLS_TX,
 
 		// transparent
 		false,
@@ -111,22 +111,25 @@ BgmapSpriteROMDef CONTROLS_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const CONTROLS_SPRITES[] =
+BgmapSpriteROMSpec* const CONTROLS_SPRITES[] =
 {
 	&CONTROLS_SPRITE,
 	NULL
 };
 
-EntityROMDef CONTROLS_EN =
+EntityROMSpec CONTROLS_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
+	// behaviors 
+	NULL,
+
 	// sprites
-	(SpriteROMDef**)CONTROLS_SPRITES,
+	(SpriteSpec**)CONTROLS_SPRITES,
 
 	// collision shapes
-	(ShapeDefinition*)NULL,
+	(ShapeSpec*)NULL,
 
 	// size
 	// if 0, width and height will be inferred from the first sprite's texture's size

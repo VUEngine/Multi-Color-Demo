@@ -40,7 +40,7 @@ extern BYTE ColorsBar4Map[];
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef COLORS_BAR_4_CH =
+CharSetROMSpec COLORS_BAR_4_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -55,10 +55,10 @@ CharSetROMDef COLORS_BAR_4_CH =
 	ColorsBar4Tiles,
 };
 
-TextureROMDef COLORS_BAR_4_TX =
+TextureROMSpec COLORS_BAR_4_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_BAR_4_CH,
+	(CharSetSpec*)&COLORS_BAR_4_CH,
 
 	// bgmap definition
 	ColorsBar4Map,
@@ -84,14 +84,14 @@ TextureROMDef COLORS_BAR_4_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_BAR_4_SPRITE =
+BgmapSpriteROMSpec COLORS_BAR_4_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_BAR_4_TX,
+		(TextureSpec*)&COLORS_BAR_4_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -111,22 +111,25 @@ BgmapSpriteROMDef COLORS_BAR_4_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const COLORS_BAR_4_SPRITES[] =
+BgmapSpriteROMSpec* const COLORS_BAR_4_SPRITES[] =
 {
 	&COLORS_BAR_4_SPRITE,
 	NULL
 };
 
-EntityROMDef COLORS_BAR_4_EN =
+EntityROMSpec COLORS_BAR_4_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
+	// behaviors 
+	NULL,
+
 	// sprites
-	(SpriteROMDef**)COLORS_BAR_4_SPRITES,
+	(SpriteSpec**)COLORS_BAR_4_SPRITES,
 
 	// collision shapes
-	(ShapeDefinition*)NULL,
+	(ShapeSpec*)NULL,
 
 	// size
 	// if 0, width and height will be inferred from the first sprite's texture's size

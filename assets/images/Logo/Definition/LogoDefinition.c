@@ -40,7 +40,7 @@ extern BYTE LogoMap[];
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef LOGO_CH =
+CharSetROMSpec LOGO_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -55,10 +55,10 @@ CharSetROMDef LOGO_CH =
 	LogoTiles,
 };
 
-TextureROMDef LOGO_TX =
+TextureROMSpec LOGO_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&LOGO_CH,
+	(CharSetSpec*)&LOGO_CH,
 
 	// bgmap definition
 	LogoMap,
@@ -84,14 +84,14 @@ TextureROMDef LOGO_TX =
 	false,
 };
 
-BgmapSpriteROMDef LOGO_SPRITE =
+BgmapSpriteROMSpec LOGO_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&LOGO_TX,
+		(TextureSpec*)&LOGO_TX,
 
 		// transparent
 		false,
@@ -111,22 +111,25 @@ BgmapSpriteROMDef LOGO_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const LOGO_SPRITES[] =
+BgmapSpriteROMSpec* const LOGO_SPRITES[] =
 {
 	&LOGO_SPRITE,
 	NULL
 };
 
-EntityROMDef LOGO_EN =
+EntityROMSpec LOGO_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
+	// behaviors 
+	NULL,
+
 	// sprites
-	(SpriteROMDef**)LOGO_SPRITES,
+	(SpriteSpec**)LOGO_SPRITES,
 
 	// collision shapes
-	(ShapeDefinition*)NULL,
+	(ShapeSpec*)NULL,
 
 	// size
 	// if 0, width and height will be inferred from the first sprite's texture's size

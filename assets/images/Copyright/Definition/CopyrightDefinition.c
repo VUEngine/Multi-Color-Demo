@@ -40,7 +40,7 @@ extern BYTE CopyrightMap[];
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef COPYRIGHT_CH =
+CharSetROMSpec COPYRIGHT_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -55,10 +55,10 @@ CharSetROMDef COPYRIGHT_CH =
 	CopyrightTiles,
 };
 
-TextureROMDef COPYRIGHT_TX =
+TextureROMSpec COPYRIGHT_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COPYRIGHT_CH,
+	(CharSetSpec*)&COPYRIGHT_CH,
 
 	// bgmap definition
 	CopyrightMap,
@@ -84,14 +84,14 @@ TextureROMDef COPYRIGHT_TX =
 	false,
 };
 
-BgmapSpriteROMDef COPYRIGHT_SPRITE =
+BgmapSpriteROMSpec COPYRIGHT_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COPYRIGHT_TX,
+		(TextureSpec*)&COPYRIGHT_TX,
 
 		// transparent
 		false,
@@ -111,22 +111,25 @@ BgmapSpriteROMDef COPYRIGHT_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const COPYRIGHT_SPRITES[] =
+BgmapSpriteROMSpec* const COPYRIGHT_SPRITES[] =
 {
 	&COPYRIGHT_SPRITE,
 	NULL
 };
 
-EntityROMDef COPYRIGHT_EN =
+EntityROMSpec COPYRIGHT_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
+	// behaviors 
+	NULL,
+
 	// sprites
-	(SpriteROMDef**)COPYRIGHT_SPRITES,
+	(SpriteSpec**)COPYRIGHT_SPRITES,
 
 	// collision shapes
-	(ShapeDefinition*)NULL,
+	(ShapeSpec*)NULL,
 
 	// size
 	// if 0, width and height will be inferred from the first sprite's texture's size

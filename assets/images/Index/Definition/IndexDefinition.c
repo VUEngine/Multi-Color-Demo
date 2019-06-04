@@ -43,7 +43,7 @@ extern BYTE IndexMap[];
 //---------------------------------------------------------------------------------------------------------
 
 // a function which defines the frames to play
-AnimationFunctionROMDef INDEX_DITHER_ANIM =
+AnimationFunctionROMSpec INDEX_DITHER_ANIM =
 {
 	// number of frames of this animation function
 	1,
@@ -65,7 +65,7 @@ AnimationFunctionROMDef INDEX_DITHER_ANIM =
 };
 
 // a function which defines the frames to play
-AnimationFunctionROMDef INDEX_COLUMN_TABLE_ANIM =
+AnimationFunctionROMSpec INDEX_COLUMN_TABLE_ANIM =
 {
 	// number of frames of this animation function
 	1,
@@ -87,7 +87,7 @@ AnimationFunctionROMDef INDEX_COLUMN_TABLE_ANIM =
 };
 
 // a function which defines the frames to play
-AnimationFunctionROMDef INDEX_BLENDING_ANIM =
+AnimationFunctionROMSpec INDEX_BLENDING_ANIM =
 {
 	// number of frames of this animation function
 	1,
@@ -109,7 +109,7 @@ AnimationFunctionROMDef INDEX_BLENDING_ANIM =
 };
 
 // an animation definition
-AnimationDescriptionROMDef INDEX_ANIM =
+AnimationDescriptionROMSpec INDEX_ANIM =
 {
 	// animation functions
 	{
@@ -120,7 +120,7 @@ AnimationDescriptionROMDef INDEX_ANIM =
 	}
 };
 
-CharSetROMDef INDEX_CH =
+CharSetROMSpec INDEX_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -135,10 +135,10 @@ CharSetROMDef INDEX_CH =
 	IndexTiles,
 };
 
-TextureROMDef INDEX_TX =
+TextureROMSpec INDEX_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&INDEX_CH,
+	(CharSetSpec*)&INDEX_CH,
 
 	// bgmap definition
 	IndexMap,
@@ -164,14 +164,14 @@ TextureROMDef INDEX_TX =
 	false,
 };
 
-BgmapSpriteROMDef INDEX_SPRITE =
+BgmapSpriteROMSpec INDEX_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapAnimatedSprite),
 
 		// texture definition
-		(TextureDefinition*)&INDEX_TX,
+		(TextureSpec*)&INDEX_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -191,23 +191,23 @@ BgmapSpriteROMDef INDEX_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const INDEX_SPRITES[] =
+BgmapSpriteROMSpec* const INDEX_SPRITES[] =
 {
 	&INDEX_SPRITE,
 	NULL
 };
 
-AnimatedEntityROMDef INDEX_AE =
+AnimatedEntityROMSpec INDEX_AE =
 {
 	{
 		// class allocator
 		__TYPE(AnimatedEntity),
 
 		// sprites
-		(SpriteROMDef**)INDEX_SPRITES,
+		(SpriteSpec**)INDEX_SPRITES,
 
 		// collision shapes
-		(ShapeDefinition*)NULL,
+		(ShapeSpec*)NULL,
 
 		// size
 		// if 0, width and height will be inferred from the first sprite's texture's size

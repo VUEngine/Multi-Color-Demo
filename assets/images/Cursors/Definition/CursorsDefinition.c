@@ -43,7 +43,7 @@ extern BYTE CursorsMap[];
 //---------------------------------------------------------------------------------------------------------
 
 // a function which defines the frames to play
-AnimationFunctionROMDef CURSORS_DEFAULT_ANIM =
+AnimationFunctionROMSpec CURSORS_DEFAULT_ANIM =
 {
 	// number of frames of this animation function
 	4,
@@ -61,11 +61,11 @@ AnimationFunctionROMDef CURSORS_DEFAULT_ANIM =
 	NULL,
 
 	// function's name
-	"Default",
+	"Specault",
 };
 
 // an animation definition
-AnimationDescriptionROMDef CURSORS_ANIM =
+AnimationDescriptionROMSpec CURSORS_ANIM =
 {
 	// animation functions
 	{
@@ -74,7 +74,7 @@ AnimationDescriptionROMDef CURSORS_ANIM =
 	}
 };
 
-CharSetROMDef CURSORS_CH =
+CharSetROMSpec CURSORS_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -89,10 +89,10 @@ CharSetROMDef CURSORS_CH =
 	CursorsTiles,
 };
 
-TextureROMDef CURSORS_TX =
+TextureROMSpec CURSORS_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&CURSORS_CH,
+	(CharSetSpec*)&CURSORS_CH,
 
 	// bgmap definition
 	CursorsMap,
@@ -118,14 +118,14 @@ TextureROMDef CURSORS_TX =
 	false,
 };
 
-BgmapSpriteROMDef CURSORS_SPRITE =
+BgmapSpriteROMSpec CURSORS_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapAnimatedSprite),
 
 		// texture definition
-		(TextureDefinition*)&CURSORS_TX,
+		(TextureSpec*)&CURSORS_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -145,23 +145,23 @@ BgmapSpriteROMDef CURSORS_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMDef* const CURSORS_SPRITES[] =
+BgmapSpriteROMSpec* const CURSORS_SPRITES[] =
 {
 	&CURSORS_SPRITE,
 	NULL
 };
 
-AnimatedEntityROMDef CURSORS_AE =
+AnimatedEntityROMSpec CURSORS_AE =
 {
 	{
 		// class allocator
 		__TYPE(AnimatedEntity),
 
 		// sprites
-		(SpriteROMDef**)CURSORS_SPRITES,
+		(SpriteSpec**)CURSORS_SPRITES,
 
 		// collision shapes
-		(ShapeDefinition*)NULL,
+		(ShapeSpec*)NULL,
 
 		// size
 		// if 0, width and height will be inferred from the first sprite's texture's size
@@ -178,5 +178,5 @@ AnimatedEntityROMDef CURSORS_AE =
 	(AnimationDescription*)&CURSORS_ANIM,
 
 	// initial animation
-	"Default",
+	"Specault",
 };

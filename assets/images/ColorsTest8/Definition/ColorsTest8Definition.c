@@ -41,7 +41,7 @@ extern BYTE ColorsTest8_2Map[];
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef COLORS_TEST_8_CH =
+CharSetROMSpec COLORS_TEST_8_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -58,10 +58,10 @@ CharSetROMDef COLORS_TEST_8_CH =
 
 /* ENTITY 1 */
 
-TextureROMDef COLORS_TEST_8_1_TX =
+TextureROMSpec COLORS_TEST_8_1_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_TEST_8_CH,
+	(CharSetSpec*)&COLORS_TEST_8_CH,
 
 	// bgmap definition
 	ColorsTest8_1Map,
@@ -87,14 +87,14 @@ TextureROMDef COLORS_TEST_8_1_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_TEST_8_1_SPRITE =
+BgmapSpriteROMSpec COLORS_TEST_8_1_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_TEST_8_1_TX,
+		(TextureSpec*)&COLORS_TEST_8_1_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -116,10 +116,10 @@ BgmapSpriteROMDef COLORS_TEST_8_1_SPRITE =
 
 /* ENTITY 2 */
 
-TextureROMDef COLORS_TEST_8_2_TX =
+TextureROMSpec COLORS_TEST_8_2_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_TEST_8_CH,
+	(CharSetSpec*)&COLORS_TEST_8_CH,
 
 	// bgmap definition
 	ColorsTest8_2Map,
@@ -145,14 +145,14 @@ TextureROMDef COLORS_TEST_8_2_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_TEST_8_2_SPRITE =
+BgmapSpriteROMSpec COLORS_TEST_8_2_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_TEST_8_2_TX,
+		(TextureSpec*)&COLORS_TEST_8_2_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_EVEN,
@@ -174,23 +174,26 @@ BgmapSpriteROMDef COLORS_TEST_8_2_SPRITE =
 
 /* ENTITY */
 
-BgmapSpriteROMDef* const COLORS_TEST_8_SPRITES[] =
+BgmapSpriteROMSpec* const COLORS_TEST_8_SPRITES[] =
 {
 	&COLORS_TEST_8_1_SPRITE,
 	&COLORS_TEST_8_2_SPRITE,
 	NULL
 };
 
-EntityROMDef COLORS_TEST_8_EN =
+EntityROMSpec COLORS_TEST_8_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
+	// behaviors 
+	NULL,
+
 	// sprites
-	(SpriteROMDef**)COLORS_TEST_8_SPRITES,
+	(SpriteSpec**)COLORS_TEST_8_SPRITES,
 
 	// collision shapes
-	(ShapeDefinition*)NULL,
+	(ShapeSpec*)NULL,
 
 	// size
 	// if 0, width and height will be inferred from the first sprite's texture's size

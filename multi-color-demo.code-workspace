@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"name": "Multi Color Demo",
+			"path": "."
+		},
+		{
+			"name": "VUEngine",
+			"path": "../../vuengine/core"
+		},
+		{
+			"name": "Plugins",
+			"path": "../../vuengine/plugins"
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			//"vuengine.vuengine-ide",
+		]		
+	},
+	"settings": {
+		"files.autoGuessEncoding": true,
+		"C_Cpp.autoAddFileAssociations": false,
+		"editor.insertSpaces": false
+	}
+}

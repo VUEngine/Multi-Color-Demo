@@ -33,23 +33,23 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntityDefinition COLORS_BAR_4_EN;
-extern EntityDefinition COLORS_BAR_8_EN;
-extern EntityDefinition COLORS_BAR_DITHER_EN;
-extern EntityDefinition COLORS_TEST_8_EN;
-extern EntityDefinition COLORS_TEST_16_EN;
-extern EntityDefinition CONTROLS_EN;
-extern EntityDefinition COPYRIGHT_EN;
-extern EntityDefinition CURSORS_AE;
-extern EntityDefinition INDEX_AE;
-extern EntityDefinition LOGO_EN;
+extern EntitySpec COLORS_BAR_4_EN;
+extern EntitySpec COLORS_BAR_8_EN;
+extern EntitySpec COLORS_BAR_DITHER_EN;
+extern EntitySpec COLORS_TEST_8_EN;
+extern EntitySpec COLORS_TEST_16_EN;
+extern EntitySpec CONTROLS_EN;
+extern EntitySpec COPYRIGHT_EN;
+extern EntitySpec CURSORS_AE;
+extern EntitySpec INDEX_AE;
+extern EntitySpec LOGO_EN;
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
-PositionedEntityROMDef COLOR_DEMO_STAGE_ST_ENTITIES[] =
+PositionedEntityROMSpec COLOR_DEMO_STAGE_ST_ENTITIES[] =
 {
 	{&LOGO_EN, 				{192,  32,  0, 0}, 0, NULL, 		NULL, NULL, false},
 	{&INDEX_AE, 			{192,  64,  0, 0}, 0, "Index", 		NULL, NULL, false},
@@ -65,7 +65,7 @@ PositionedEntityROMDef COLOR_DEMO_STAGE_ST_ENTITIES[] =
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedEntityROMDef COLOR_DEMO_STAGE_ST_UI_ENTITIES[] =
+PositionedEntityROMSpec COLOR_DEMO_STAGE_ST_UI_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -75,7 +75,7 @@ PositionedEntityROMDef COLOR_DEMO_STAGE_ST_UI_ENTITIES[] =
 // 											PRELOAD LISTS
 //---------------------------------------------------------------------------------------------------------
 
-FontROMDef* const COLOR_DEMO_STAGE_ST_FONTS[] =
+FontROMSpec* const COLOR_DEMO_STAGE_ST_FONTS[] =
 {
 	NULL
 };
@@ -85,7 +85,7 @@ FontROMDef* const COLOR_DEMO_STAGE_ST_FONTS[] =
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMDef COLOR_DEMO_STAGE_ST =
+StageROMSpec COLOR_DEMO_STAGE_ST =
 {
 	// allocator
 	__TYPE(Stage),
@@ -174,7 +174,7 @@ StageROMDef COLOR_DEMO_STAGE_ST =
 			},
 
 			// brightness repeat
-			(BrightnessRepeatDefinition*)NULL,
+			(BrightnessRepeatSpec*)NULL,
 		},
 
 		// palettes' config
@@ -264,13 +264,13 @@ StageROMDef COLOR_DEMO_STAGE_ST =
 	// assets
 	{
 		// fonts to preload
-		(FontDefinition**)COLOR_DEMO_STAGE_ST_FONTS,
+		(FontSpec**)COLOR_DEMO_STAGE_ST_FONTS,
 
 		// char sets to preload
-		(CharSetDefinition**)NULL,
+		(CharSetSpec**)NULL,
 
 		// textures to preload
-		(TextureDefinition**)NULL,
+		(TextureSpec**)NULL,
 
 		// background music
 		(const u16 (*)[])NULL,

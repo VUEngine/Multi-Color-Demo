@@ -38,9 +38,9 @@
 // 												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern StageROMDef COLOR_DEMO_STAGE_ST;
-extern BrightnessRepeatROMDef GRADIENT_BRIGHTNESS_REPEAT;
-extern BrightnessRepeatROMDef DEFAULT_BRIGHTNESS_REPEAT;
+extern StageROMSpec COLOR_DEMO_STAGE_ST;
+extern BrightnessRepeatROMSpec GRADIENT_BRIGHTNESS_REPEAT;
+extern BrightnessRepeatROMSpec DEFAULT_BRIGHTNESS_REPEAT;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ void ColorDemoState::enter(void* owner __attribute__ ((unused)))
 	Base::enter(this, owner);
 
 	// load stage
-	GameState::loadStage(GameState::safeCast(this), (StageDefinition*)&COLOR_DEMO_STAGE_ST, NULL, true);
+	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&COLOR_DEMO_STAGE_ST, NULL, true);
 
 	// get entities
 	this->cbColTabEntity = Entity::safeCast(Container::getChildByName(Container::safeCast(Game::getStage(Game::getInstance())), "CBColTab", true));
@@ -133,7 +133,7 @@ void ColorDemoState::setMode()
 			_vipRegisters[__BRTA] = 32;
 			_vipRegisters[__BRTB] = 64;
 			_vipRegisters[__BRTC] = 32;
-			VIPManager::setupBrightnessRepeat(VIPManager::getInstance(), (BrightnessRepeatDefinition*)&DEFAULT_BRIGHTNESS_REPEAT);
+			VIPManager::setupBrightnessRepeat(VIPManager::getInstance(), (BrightnessRepeatSpec*)&DEFAULT_BRIGHTNESS_REPEAT);
 
 			break;
 		}
@@ -150,7 +150,7 @@ void ColorDemoState::setMode()
 			_vipRegisters[__BRTA] = 1;
 			_vipRegisters[__BRTB] = 2;
 			_vipRegisters[__BRTC] = 0;
-			VIPManager::setupBrightnessRepeat(VIPManager::getInstance(), (BrightnessRepeatDefinition*)&GRADIENT_BRIGHTNESS_REPEAT);
+			VIPManager::setupBrightnessRepeat(VIPManager::getInstance(), (BrightnessRepeatSpec*)&GRADIENT_BRIGHTNESS_REPEAT);
 
 			break;
 		}
@@ -167,7 +167,7 @@ void ColorDemoState::setMode()
 			_vipRegisters[__BRTA] = 32;
 			_vipRegisters[__BRTB] = 64;
 			_vipRegisters[__BRTC] = 32;
-			VIPManager::setupBrightnessRepeat(VIPManager::getInstance(), (BrightnessRepeatDefinition*)&DEFAULT_BRIGHTNESS_REPEAT);
+			VIPManager::setupBrightnessRepeat(VIPManager::getInstance(), (BrightnessRepeatSpec*)&DEFAULT_BRIGHTNESS_REPEAT);
 
 			break;
 		}

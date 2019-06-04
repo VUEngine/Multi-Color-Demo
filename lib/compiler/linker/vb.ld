@@ -7,8 +7,9 @@ SEARCH_DIR(.);
 
 MEMORY
 {
-    wram    (!r)    : ORIGIN =  0x05000000, LENGTH = 64k /*64k*/
-    dram    (!r)    : ORIGIN =  0x0003A800, LENGTH = 12k
+    dram    (!r)    : ORIGIN =  0x0003A000, LENGTH = 12k
+    wram    (!r)    : ORIGIN =  0x05000000, LENGTH = 64k
+    exp     (r)     : ORIGIN =  0x04000000, LENGTH = 16M
     sram    (!r)    : ORIGIN =  0x06000000, LENGTH = 16M
     rom     (rx)    : ORIGIN =  0x07000000, LENGTH = 16M
 }
@@ -18,15 +19,23 @@ If not defined, define interrupt
 Handlers as system reset
 */
 
-__text_vma = ORIGIN(rom);
-__data_vma = ORIGIN(wram);
-__sram_vma = ORIGIN(sram);
 __dram_vma = ORIGIN(dram);
+__data_vma = ORIGIN(wram);
+__exp_vma = ORIGIN(exp);
+__sram_vma = ORIGIN(sram);
+__text_vma = ORIGIN(rom);
 __stack = ORIGIN(wram) + LENGTH(wram) - 64;
 
 SECTIONS
 {
     /* Read-only sections, merged into text segment: */
+	.expdata __exp_vma (NOLOAD):
+	{
+		PROVIDE (__exp_data_start = .);
+		*(.expdata*)
+		PROVIDE (__exp_data_end = .);
+	} >exp = 0xFF
+
     .text __text_vma :
     {
     	PROVIDE (__tp = .);
@@ -105,7 +114,7 @@ SECTIONS
     /* Compute the vector address */
     /* This promotes . to a power of two */
 
-    v2 = v1 + 0x21F; 		/* add size of jump table */
+    v2 = v1 + 0x1FF; 		/* add size of jump table */
     v3 = v2 & 0x00FFFFFF;
     v4 = v3 | (v3 >> 1);
     v5 = v4 | (v4 >> 2);
@@ -113,7 +122,14 @@ SECTIONS
     v7 = v6 | (v6 >> 8);
     v8 = v7 | (v7 >> 16);
 
-    __vbvectors_vma = __text_vma + v8 - 0x21F;
+    __vbvectors_vma = __text_vma + v8 - 0x1FF;
+    __rominfo_vma = __vbvectors_vma - 0x20;
+
+    /* Place rom's info before the interrupt vectors */
+    .rominfo __rominfo_vma :
+    {
+        KEEP (*(.rominfo))
+    } >rom = 0xFF
 
     /* Place interrupt and reset vector at end of rom */
     .vbvectors __vbvectors_vma :

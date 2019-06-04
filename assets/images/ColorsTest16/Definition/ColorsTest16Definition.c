@@ -42,7 +42,7 @@ extern BYTE ColorsTest16_3Map[];
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef COLORS_TEST_16_CH =
+CharSetROMSpec COLORS_TEST_16_CH =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -59,10 +59,10 @@ CharSetROMDef COLORS_TEST_16_CH =
 
 /* ENTITY 1 */
 
-TextureROMDef COLORS_TEST_16_1_TX =
+TextureROMSpec COLORS_TEST_16_1_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_TEST_16_CH,
+	(CharSetSpec*)&COLORS_TEST_16_CH,
 
 	// bgmap definition
 	ColorsTest16_1Map,
@@ -88,14 +88,14 @@ TextureROMDef COLORS_TEST_16_1_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_TEST_16_1_SPRITE =
+BgmapSpriteROMSpec COLORS_TEST_16_1_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_TEST_16_1_TX,
+		(TextureSpec*)&COLORS_TEST_16_1_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -117,10 +117,10 @@ BgmapSpriteROMDef COLORS_TEST_16_1_SPRITE =
 
 /* ENTITY 2 */
 
-TextureROMDef COLORS_TEST_16_2_TX =
+TextureROMSpec COLORS_TEST_16_2_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_TEST_16_CH,
+	(CharSetSpec*)&COLORS_TEST_16_CH,
 
 	// bgmap definition
 	ColorsTest16_2Map,
@@ -146,14 +146,14 @@ TextureROMDef COLORS_TEST_16_2_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_TEST_16_2_SPRITE =
+BgmapSpriteROMSpec COLORS_TEST_16_2_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_TEST_16_2_TX,
+		(TextureSpec*)&COLORS_TEST_16_2_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_EVEN,
@@ -175,10 +175,10 @@ BgmapSpriteROMDef COLORS_TEST_16_2_SPRITE =
 
 /* ENTITY 3 */
 
-TextureROMDef COLORS_TEST_16_3_TX =
+TextureROMSpec COLORS_TEST_16_3_TX =
 {
 	// charset definition
-	(CharSetDefinition*)&COLORS_TEST_16_CH,
+	(CharSetSpec*)&COLORS_TEST_16_CH,
 
 	// bgmap definition
 	ColorsTest16_3Map,
@@ -204,14 +204,14 @@ TextureROMDef COLORS_TEST_16_3_TX =
 	false,
 };
 
-BgmapSpriteROMDef COLORS_TEST_16_3_SPRITE =
+BgmapSpriteROMSpec COLORS_TEST_16_3_SPRITE =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureDefinition*)&COLORS_TEST_16_3_TX,
+		(TextureSpec*)&COLORS_TEST_16_3_TX,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_ODD,
@@ -233,7 +233,7 @@ BgmapSpriteROMDef COLORS_TEST_16_3_SPRITE =
 
 /* ENTITY */
 
-BgmapSpriteROMDef* const COLORS_TEST_16_SPRITES[] =
+BgmapSpriteROMSpec* const COLORS_TEST_16_SPRITES[] =
 {
 	&COLORS_TEST_16_1_SPRITE,
 	&COLORS_TEST_16_2_SPRITE,
@@ -241,16 +241,19 @@ BgmapSpriteROMDef* const COLORS_TEST_16_SPRITES[] =
 	NULL
 };
 
-EntityROMDef COLORS_TEST_16_EN =
+EntityROMSpec COLORS_TEST_16_EN =
 {
 	// class allocator
 	__TYPE(Entity),
 
+	// behaviors 
+	NULL,
+
 	// sprites
-	(SpriteROMDef**)COLORS_TEST_16_SPRITES,
+	(SpriteSpec**)COLORS_TEST_16_SPRITES,
 
 	// collision shapes
-	(ShapeDefinition*)NULL,
+	(ShapeSpec*)NULL,
 
 	// size
 	// if 0, width and height will be inferred from the first sprite's texture's size

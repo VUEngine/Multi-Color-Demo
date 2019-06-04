@@ -24,6 +24,20 @@
 
 
 //---------------------------------------------------------------------------------------------------------
+//											ROM HEADER INFO
+//---------------------------------------------------------------------------------------------------------
+
+// game title (20 chars) 	 ####################
+#define __GAME_TITLE		"MULTI COLOR DEMO "
+// maker code (2 chars)		 ##
+#define __MAKER_CODE		"TV"
+// game code (4 chars)		 ####
+#define __GAME_CODE			"MCDV"
+// revision (1.x)			 #
+#define __ROM_VERSION		 0
+
+
+//---------------------------------------------------------------------------------------------------------
 //											DEBUGGING / PROFILING
 //---------------------------------------------------------------------------------------------------------
 
@@ -156,7 +170,7 @@
 // Target frames per second
 #define __OPTIMUM_FPS 							(__TARGET_FPS >> __FRAME_CYCLE)
 
-// Define to dispatch the delayed messages every other game frame cycle
+// Specine to dispatch the delayed messages every other game frame cycle
 #undef __RUN_DELAYED_MESSAGES_DISPATCHING_AT_HALF_FRAME_RATE
 
 
@@ -351,7 +365,7 @@
 //											BRIGHTNESS
 //---------------------------------------------------------------------------------------------------------
 
-/* Default brightness settings, actual values are set in stage definitions
+/* Specault brightness settings, actual values are set in stage definitions
  * for a nice progression, each shade should be about twice as big as the previous one
  * _BRIGHT_RED must be larger than _DARK_RED + _MEDIUM_RED
  */
@@ -359,7 +373,7 @@
 #define __BRIGHTNESS_MEDIUM_RED					64
 #define __BRIGHTNESS_BRIGHT_RED					128
 
-// Default delay between steps in fade effect
+// Specault delay between steps in fade effect
 #define __FADE_DELAY							8
 
 
@@ -369,7 +383,7 @@
 
 #define __PRINTING_PALETTE						0
 
-// Default palette values, actual values are set in stage definitions
+// Specault palette values, actual values are set in stage definitions
 #define __BGMAP_PALETTE_0						0b11100100 // normal progression
 #define __BGMAP_PALETTE_1						0b11100000 // show dark red as black
 #define __BGMAP_PALETTE_2						0b10010000 // background layer

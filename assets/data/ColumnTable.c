@@ -31,7 +31,7 @@
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-BrightnessRepeatROMDef GRADIENT_BRIGHTNESS_REPEAT =
+BrightnessRepeatROMSpec GRADIENT_BRIGHTNESS_REPEAT =
 {
 	// mirror definition?
 	false,
