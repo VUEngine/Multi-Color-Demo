@@ -1,6 +1,4 @@
-{
-	"plugins": [
-		"vuengine/states/SplashScreens",
-		"vuengine/other/LowPowerIndicator"
-	]
-}
+[
+	"vuengine/states/SplashScreens",
+	"vuengine/other/LowPowerIndicator"
+]

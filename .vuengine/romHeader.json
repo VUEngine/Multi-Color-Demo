@@ -1,8 +1,6 @@
 {
-	"romHeader": {
-		"gameCode": "VMCE",
-		"gameTitle": "Multi Color Demo",
-		"makerCode": "TV",
-		"revision": 0
-	}
+	"gameCode": "VMCE",
+	"gameTitle": "Multi Color Demo",
+	"makerCode": "TV",
+	"revision": 0
 }
