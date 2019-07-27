@@ -1,5 +1,7 @@
 {
-	"gameCode": "VMCE",
+	"gameCodeSystem": "V",
+	"gameCodeId": "MC",
+	"gameCodeLanguage": "E",
 	"gameTitle": "Multi Color Demo",
 	"makerCode": "TV",
 	"revision": 0
