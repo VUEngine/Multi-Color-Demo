@@ -90,6 +90,18 @@ StageROMSpec COLOR_DEMO_STAGE_ST =
 	// allocator
 	__TYPE(Stage),
 
+	// Timer config
+	{
+		__TIMER_100US,
+		10,
+		kMS
+	},
+
+	// Sound config
+	{
+		__DEFAULT_PCM_HZ,
+	},
+
 	// level
 	{
 		// size
@@ -272,8 +284,8 @@ StageROMSpec COLOR_DEMO_STAGE_ST =
 		// textures to preload
 		(TextureSpec**)NULL,
 
-		// background music
-		(const u16 (*)[])NULL,
+		// background sounds
+		(Sound**)NULL,
 	},
 
 	// entities
