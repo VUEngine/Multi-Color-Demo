@@ -82,6 +82,12 @@ TextureROMSpec COLORS_BAR_DITHER_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec COLORS_BAR_DITHER_SPRITE =
@@ -122,11 +128,20 @@ EntityROMSpec COLORS_BAR_DITHER_EN =
 	// class allocator
 	__TYPE(Entity),
 
+	// children 
+	NULL,
+
 	// behaviors 
+	NULL,
+
+	// extra
 	NULL,
 
 	// sprites
 	(SpriteSpec**)COLORS_BAR_DITHER_SPRITES,
+
+	// use z displacement in projection
+	false,
 
 	// collision shapes
 	(ShapeSpec*)NULL,
@@ -136,7 +151,7 @@ EntityROMSpec COLORS_BAR_DITHER_EN =
 	{0, 0, 0},
 
 	// gameworld's character's type
-	kNoType,
+	kTypeNone,
 
 	// physical specification
 	(PhysicalSpecification*)NULL,

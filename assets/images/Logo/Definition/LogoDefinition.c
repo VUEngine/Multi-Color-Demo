@@ -82,6 +82,12 @@ TextureROMSpec LOGO_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec LOGO_SPRITE =
@@ -122,11 +128,20 @@ EntityROMSpec LOGO_EN =
 	// class allocator
 	__TYPE(Entity),
 
+	// children 
+	NULL,
+
 	// behaviors 
+	NULL,
+
+	// extra
 	NULL,
 
 	// sprites
 	(SpriteSpec**)LOGO_SPRITES,
+
+	// use z displacement in projection
+	false,
 
 	// collision shapes
 	(ShapeSpec*)NULL,

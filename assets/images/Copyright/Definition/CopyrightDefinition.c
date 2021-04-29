@@ -82,6 +82,12 @@ TextureROMSpec COPYRIGHT_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec COPYRIGHT_SPRITE =
@@ -122,11 +128,20 @@ EntityROMSpec COPYRIGHT_EN =
 	// class allocator
 	__TYPE(Entity),
 
+	// children 
+	NULL,
+
 	// behaviors 
+	NULL,
+
+	// extra
 	NULL,
 
 	// sprites
 	(SpriteSpec**)COPYRIGHT_SPRITES,
+
+	// use z displacement in projection
+	false,
 
 	// collision shapes
 	(ShapeSpec*)NULL,

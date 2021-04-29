@@ -162,6 +162,12 @@ TextureROMSpec INDEX_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec INDEX_SPRITE =
@@ -206,6 +212,9 @@ AnimatedEntityROMSpec INDEX_AE =
 		// sprites
 		(SpriteSpec**)INDEX_SPRITES,
 
+		// use z displacement in projection
+		false,
+
 		// collision shapes
 		(ShapeSpec*)NULL,
 
@@ -214,7 +223,7 @@ AnimatedEntityROMSpec INDEX_AE =
 		{0, 0, 0},
 
 		// gameworld's character's type
-		kNoType,
+		kTypeNone,
 
 		// physical specification
 		(PhysicalSpecification*)NULL,

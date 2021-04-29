@@ -86,6 +86,12 @@ TextureROMSpec COLORS_TEST_16_1_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec COLORS_TEST_16_1_SPRITE =
@@ -143,6 +149,12 @@ TextureROMSpec COLORS_TEST_16_2_TX =
 	0,
 
 	// recyclable
+	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
 	false,
 };
 
@@ -202,6 +214,12 @@ TextureROMSpec COLORS_TEST_16_3_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec COLORS_TEST_16_3_SPRITE =
@@ -246,11 +264,20 @@ EntityROMSpec COLORS_TEST_16_EN =
 	// class allocator
 	__TYPE(Entity),
 
+	// children 
+	NULL,
+
 	// behaviors 
+	NULL,
+
+	// extra
 	NULL,
 
 	// sprites
 	(SpriteSpec**)COLORS_TEST_16_SPRITES,
+
+	// use z displacement in projection
+	false,
 
 	// collision shapes
 	(ShapeSpec*)NULL,
@@ -260,7 +287,7 @@ EntityROMSpec COLORS_TEST_16_EN =
 	{0, 0, 0},
 
 	// gameworld's character's type
-	kNoType,
+	kTypeNone,
 
 	// physical specification
 	(PhysicalSpecification*)NULL,

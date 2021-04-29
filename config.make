@@ -49,4 +49,4 @@ VIRTUAL_TABLES_DATA_SECTION		= .dram_bss
 # MSDA_SIZE						= 0
 
 # Scramble binary
-SCRAMBLE_BINARY                 = 0
+SCRAMBLE_BINARY					= 0

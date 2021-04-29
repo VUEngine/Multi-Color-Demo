@@ -116,6 +116,12 @@ TextureROMSpec CURSORS_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec CURSORS_SPRITE =
@@ -157,8 +163,20 @@ AnimatedEntityROMSpec CURSORS_AE =
 		// class allocator
 		__TYPE(AnimatedEntity),
 
+		// children 
+		NULL,
+
+		// behaviors 
+		NULL,
+
+		// extra
+		NULL,
+
 		// sprites
 		(SpriteSpec**)CURSORS_SPRITES,
+
+		// use z displacement in projection
+		false,
 
 		// collision shapes
 		(ShapeSpec*)NULL,
@@ -168,7 +186,7 @@ AnimatedEntityROMSpec CURSORS_AE =
 		{0, 0, 0},
 
 		// gameworld's character's type
-		kNoType,
+		kTypeNone,
 
 		// physical specification
 		(PhysicalSpecification*)NULL,

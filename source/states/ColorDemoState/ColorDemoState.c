@@ -92,6 +92,7 @@ void ColorDemoState::enter(void* owner __attribute__ ((unused)))
 	Entity::hide(this->cbTranspEntity);
 
 	// start fade in effect
+	Camera::startEffect(Camera::getInstance(), kHide);
 	Camera::startEffect(Camera::getInstance(),
 		kFadeTo, // effect type
 		0, // initial delay (in ms)

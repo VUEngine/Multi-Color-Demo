@@ -85,6 +85,12 @@ TextureROMSpec COLORS_BAR_8_1_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec COLORS_BAR_8_1_SPRITE =
@@ -143,6 +149,12 @@ TextureROMSpec COLORS_BAR_8_2_TX =
 
 	// recyclable
 	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
 };
 
 BgmapSpriteROMSpec COLORS_BAR_8_2_SPRITE =
@@ -186,11 +198,20 @@ EntityROMSpec COLORS_BAR_8_EN =
 	// class allocator
 	__TYPE(Entity),
 
+	// children 
+	NULL,
+
 	// behaviors 
+	NULL,
+
+	// extra
 	NULL,
 
 	// sprites
 	(SpriteSpec**)COLORS_BAR_8_SPRITES,
+
+	// use z displacement in projection
+	false,
 
 	// collision shapes
 	(ShapeSpec*)NULL,
@@ -200,7 +221,7 @@ EntityROMSpec COLORS_BAR_8_EN =
 	{0, 0, 0},
 
 	// gameworld's character's type
-	kNoType,
+	kTypeNone,
 
 	// physical specification
 	(PhysicalSpecification*)NULL,
