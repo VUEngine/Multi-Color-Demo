@@ -15,7 +15,7 @@
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-LangROMSpec* const __LANGUAGES[] =
+LangROMSpec* const _languages[] =
 {
 	
 	NULL

@@ -33,39 +33,39 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntitySpec COLORS_BAR_4_EN;
-extern EntitySpec COLORS_BAR_8_EN;
-extern EntitySpec COLORS_BAR_DITHER_EN;
-extern EntitySpec COLORS_TEST_8_EN;
-extern EntitySpec COLORS_TEST_16_EN;
-extern EntitySpec CONTROLS_EN;
-extern EntitySpec COPYRIGHT_EN;
-extern EntitySpec CURSORS_AE;
-extern EntitySpec INDEX_AE;
-extern EntitySpec LOGO_EN;
+extern EntitySpec ColorsBar4Entity;
+extern EntitySpec ColorsBar8Entity;
+extern EntitySpec ColorsBarDitherEntity;
+extern EntitySpec ColorsTest8Entity;
+extern EntitySpec ColorsTest16Entity;
+extern EntitySpec ControlsEntity;
+extern EntitySpec CopyrightEntity;
+extern EntitySpec CursorsAe;
+extern EntitySpec IndexAe;
+extern EntitySpec LogoEntity;
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
-PositionedEntityROMSpec COLOR_DEMO_STAGE_ST_ENTITIES[] =
+PositionedEntityROMSpec ColorDemoStageEntities[] =
 {
-	{&LOGO_EN, 				{192,  32,  0, 0}, 0, NULL, 		NULL, NULL, false},
-	{&INDEX_AE, 			{192,  64,  0, 0}, 0, "Index", 		NULL, NULL, false},
-//	{&COLORS_TEST_8_EN, 	{192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
-//	{&COLORS_TEST_16_EN, 	{192, 124,  0, 0}, 0, "CBTransp", 	NULL, NULL, false},
-	{&COLORS_BAR_DITHER_EN,	{192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
-	{&COLORS_BAR_4_EN, 		{192, 124,  0, 0}, 0, "CBColTab", 	NULL, NULL, false},
-	{&COLORS_BAR_8_EN, 		{192, 124,  0, 0}, 0, "CBTransp", 	NULL, NULL, false},
-	{&CURSORS_AE, 			{192, 124,  0, 0}, 0, NULL, 		NULL, NULL, false},
-//	{&CONTROLS_EN, 			{192, 192,  0, 0}, 0, NULL, 		NULL, NULL, false},
-	{&COPYRIGHT_EN, 		{192, 214,  0, 0}, 0, NULL, 		NULL, NULL, false},
+	{&LogoEntity, 				{192,  32,  0, 0}, 0, NULL, 		NULL, NULL, false},
+	{&IndexAe, 					{192,  64,  0, 0}, 0, "Index", 		NULL, NULL, false},
+//	{&ColorsTest8Entity, 		{192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
+//	{&ColorsTest16Entity, 		{192, 124,  0, 0}, 0, "CBTransp", 	NULL, NULL, false},
+	{&ColorsBarDitherEntity,	{192, 124,  0, 0}, 0, "CBDither", 	NULL, NULL, false},
+	{&ColorsBar4Entity, 		{192, 124,  0, 0}, 0, "CBColTab", 	NULL, NULL, false},
+	{&ColorsBar8Entity, 		{192, 124,  0, 0}, 0, "CBTransp", 	NULL, NULL, false},
+	{&CursorsAe, 				{192, 124,  0, 0}, 0, NULL, 		NULL, NULL, false},
+//	{&ControlsEntity, 			{192, 192,  0, 0}, 0, NULL, 		NULL, NULL, false},
+	{&CopyrightEntity, 			{192, 214,  0, 0}, 0, NULL, 		NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedEntityROMSpec COLOR_DEMO_STAGE_ST_UI_ENTITIES[] =
+PositionedEntityROMSpec ColorDemoStageUiEntities[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -75,7 +75,7 @@ PositionedEntityROMSpec COLOR_DEMO_STAGE_ST_UI_ENTITIES[] =
 // 											PRELOAD LISTS
 //---------------------------------------------------------------------------------------------------------
 
-FontROMSpec* const COLOR_DEMO_STAGE_ST_FONTS[] =
+FontROMSpec* const ColorDemoStageFonts[] =
 {
 	NULL
 };
@@ -85,7 +85,7 @@ FontROMSpec* const COLOR_DEMO_STAGE_ST_FONTS[] =
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMSpec COLOR_DEMO_STAGE_ST =
+StageROMSpec ColorDemoStage =
 {
 	// allocator
 	__TYPE(Stage),
@@ -277,7 +277,7 @@ StageROMSpec COLOR_DEMO_STAGE_ST =
 	// assets
 	{
 		// fonts to preload
-		(FontSpec**)COLOR_DEMO_STAGE_ST_FONTS,
+		(FontSpec**)ColorDemoStageFonts,
 
 		// char sets to preload
 		(CharSetSpec**)NULL,
@@ -293,12 +293,12 @@ StageROMSpec COLOR_DEMO_STAGE_ST =
 	{
 		// ui
 		{
-			(PositionedEntity*)COLOR_DEMO_STAGE_ST_UI_ENTITIES,
+			(PositionedEntity*)ColorDemoStageUiEntities,
 			__TYPE(UIContainer),
 		},
 
 		// children
-		(PositionedEntity*)COLOR_DEMO_STAGE_ST_ENTITIES,
+		(PositionedEntity*)ColorDemoStageEntities,
 	},
 
 	// post processing effects

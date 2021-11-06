@@ -3,8 +3,8 @@
 ###########################################################################################################
 
 # VUEngine based plugins that the project uses
-PLUGINS 						= vuengine/states/SplashScreens \
-								  vuengine/other/LowPowerIndicator
+PLUGINS 						= vuengine//states/SplashScreens \
+								  vuengine//other/LowPowerIndicator
 
 # Compiler's output
 COMPILER_OUTPUT					= c

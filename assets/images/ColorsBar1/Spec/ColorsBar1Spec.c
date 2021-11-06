@@ -32,36 +32,36 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern BYTE ColorsBar4Tiles[];
-extern BYTE ColorsBar4Map[];
+extern BYTE ColorsBar1Tiles[];
+extern BYTE ColorsBar1Map[];
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMSpec COLORS_BAR_4_CH =
+CharSetROMSpec ColorsBar1Charset =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
 	// __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-	6,
+	4,
 
 	// allocation type
 	// (__ANIMATED_SINGLE, __ANIMATED_SINGLE_OPTIMIZED, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
 	__NOT_ANIMATED,
 
 	// char definition
-	ColorsBar4Tiles,
+	ColorsBar1Tiles,
 };
 
-TextureROMSpec COLORS_BAR_4_TX =
+TextureROMSpec ColorsBar1Texture =
 {
 	// charset definition
-	(CharSetSpec*)&COLORS_BAR_4_CH,
+	(CharSetSpec*)&ColorsBar1Charset,
 
 	// bgmap definition
-	ColorsBar4Map,
+	ColorsBar1Map,
 
 	// cols (max 64)
 	34,
@@ -90,14 +90,14 @@ TextureROMSpec COLORS_BAR_4_TX =
 	false,
 };
 
-BgmapSpriteROMSpec COLORS_BAR_4_SPRITE =
+BgmapSpriteROMSpec ColorsBar1Sprite =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureSpec*)&COLORS_BAR_4_TX,
+		(TextureSpec*)&ColorsBar1Texture,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -117,13 +117,13 @@ BgmapSpriteROMSpec COLORS_BAR_4_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMSpec* const COLORS_BAR_4_SPRITES[] =
+BgmapSpriteROMSpec* const ColorsBar1Sprites[] =
 {
-	&COLORS_BAR_4_SPRITE,
+	&ColorsBar1Sprite,
 	NULL
 };
 
-EntityROMSpec COLORS_BAR_4_EN =
+EntityROMSpec ColorsBar1Entity =
 {
 	// class allocator
 	__TYPE(Entity),
@@ -138,7 +138,7 @@ EntityROMSpec COLORS_BAR_4_EN =
 	NULL,
 
 	// sprites
-	(SpriteSpec**)COLORS_BAR_4_SPRITES,
+	(SpriteSpec**)ColorsBar1Sprites,
 
 	// use z displacement in projection
 	false,

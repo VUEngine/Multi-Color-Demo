@@ -43,7 +43,7 @@ extern BYTE IndexMap[];
 //---------------------------------------------------------------------------------------------------------
 
 // a function which defines the frames to play
-AnimationFunctionROMSpec INDEX_DITHER_ANIM =
+AnimationFunctionROMSpec IndexDitherAnimation =
 {
 	// number of frames of this animation function
 	1,
@@ -65,7 +65,7 @@ AnimationFunctionROMSpec INDEX_DITHER_ANIM =
 };
 
 // a function which defines the frames to play
-AnimationFunctionROMSpec INDEX_COLUMN_TABLE_ANIM =
+AnimationFunctionROMSpec IndexColumnTableAnimation =
 {
 	// number of frames of this animation function
 	1,
@@ -87,7 +87,7 @@ AnimationFunctionROMSpec INDEX_COLUMN_TABLE_ANIM =
 };
 
 // a function which defines the frames to play
-AnimationFunctionROMSpec INDEX_BLENDING_ANIM =
+AnimationFunctionROMSpec IndexBlendingAnimation =
 {
 	// number of frames of this animation function
 	1,
@@ -109,18 +109,18 @@ AnimationFunctionROMSpec INDEX_BLENDING_ANIM =
 };
 
 // an animation definition
-AnimationDescriptionROMSpec INDEX_ANIM =
+AnimationDescriptionROMSpec IndexAnimation =
 {
 	// animation functions
 	{
-		(AnimationFunction*)&INDEX_DITHER_ANIM,
-		(AnimationFunction*)&INDEX_COLUMN_TABLE_ANIM,
-		(AnimationFunction*)&INDEX_BLENDING_ANIM,
+		(AnimationFunction*)&IndexDitherAnimation,
+		(AnimationFunction*)&IndexColumnTableAnimation,
+		(AnimationFunction*)&IndexBlendingAnimation,
 		NULL,
 	}
 };
 
-CharSetROMSpec INDEX_CH =
+CharSetROMSpec IndexCharset =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
@@ -135,10 +135,10 @@ CharSetROMSpec INDEX_CH =
 	IndexTiles,
 };
 
-TextureROMSpec INDEX_TX =
+TextureROMSpec IndexTexture =
 {
 	// charset definition
-	(CharSetSpec*)&INDEX_CH,
+	(CharSetSpec*)&IndexCharset,
 
 	// bgmap definition
 	IndexMap,
@@ -170,14 +170,14 @@ TextureROMSpec INDEX_TX =
 	false,
 };
 
-BgmapSpriteROMSpec INDEX_SPRITE =
+BgmapSpriteROMSpec IndexSprite =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapAnimatedSprite),
 
 		// texture definition
-		(TextureSpec*)&INDEX_TX,
+		(TextureSpec*)&IndexTexture,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -197,20 +197,20 @@ BgmapSpriteROMSpec INDEX_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMSpec* const INDEX_SPRITES[] =
+BgmapSpriteROMSpec* const IndexSprites[] =
 {
-	&INDEX_SPRITE,
+	&IndexSprite,
 	NULL
 };
 
-AnimatedEntityROMSpec INDEX_AE =
+AnimatedEntityROMSpec IndexAe =
 {
 	{
 		// class allocator
 		__TYPE(AnimatedEntity),
 
 		// sprites
-		(SpriteSpec**)INDEX_SPRITES,
+		(SpriteSpec**)IndexSprites,
 
 		// use z displacement in projection
 		false,
@@ -230,7 +230,7 @@ AnimatedEntityROMSpec INDEX_AE =
 	},
 
 	// pointer to the animation definition for the item
-	(AnimationDescription*)&INDEX_ANIM,
+	(AnimationDescription*)&IndexAnimation,
 
 	// initial animation
 	"Dither",

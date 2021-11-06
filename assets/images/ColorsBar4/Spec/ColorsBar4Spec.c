@@ -1,7 +1,7 @@
 /* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
  * A universal game engine for the Nintendo Virtual Boy
  *
- * Controls (C) 2007, 2018 by Jorge Eremiev<jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
+ * Copyright (C) 2007, 2018 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction, including
@@ -9,12 +9,12 @@
  * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
  *
- * The above Controls notice and this permission notice shall be included in all copies or substantial
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
  * portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
  * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR CONTROLS HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
@@ -32,44 +32,44 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern BYTE ControlsTiles[];
-extern BYTE ControlsMap[];
+extern BYTE ColorsBar4Tiles[];
+extern BYTE ColorsBar4Map[];
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMSpec CONTROLS_CH =
+CharSetROMSpec ColorsBar4Charset =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
 	// __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-	10,
+	6,
 
 	// allocation type
 	// (__ANIMATED_SINGLE, __ANIMATED_SINGLE_OPTIMIZED, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
 	__NOT_ANIMATED,
 
 	// char definition
-	ControlsTiles,
+	ColorsBar4Tiles,
 };
 
-TextureROMSpec CONTROLS_TX =
+TextureROMSpec ColorsBar4Texture =
 {
 	// charset definition
-	(CharSetSpec*)&CONTROLS_CH,
+	(CharSetSpec*)&ColorsBar4Charset,
 
 	// bgmap definition
-	ControlsMap,
+	ColorsBar4Map,
 
 	// cols (max 64)
-	10,
+	34,
 
 	// rows (max 64)
-	2,
+	14,
 
-	// padding for affine transformations
+	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
 
 	// number of frames, depending on charset's allocation type:
@@ -90,17 +90,17 @@ TextureROMSpec CONTROLS_TX =
 	false,
 };
 
-BgmapSpriteROMSpec CONTROLS_SPRITE =
+BgmapSpriteROMSpec ColorsBar4Sprite =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureSpec*)&CONTROLS_TX,
+		(TextureSpec*)&ColorsBar4Texture,
 
-		// transparent
-		false,
+		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
+		__TRANSPARENCY_NONE,
 
 		// displacement
 		{0, 0, 0, 0},
@@ -110,20 +110,20 @@ BgmapSpriteROMSpec CONTROLS_SPRITE =
 	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
 	__WORLD_BGMAP,
 
-	// pointer to affine / hbias manipulation function
+	// pointer to affine/hbias manipulation function
 	NULL,
 
 	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
 	__WORLD_ON,
 };
 
-BgmapSpriteROMSpec* const CONTROLS_SPRITES[] =
+BgmapSpriteROMSpec* const ColorsBar4Sprites[] =
 {
-	&CONTROLS_SPRITE,
+	&ColorsBar4Sprite,
 	NULL
 };
 
-EntityROMSpec CONTROLS_EN =
+EntityROMSpec ColorsBar4Entity =
 {
 	// class allocator
 	__TYPE(Entity),
@@ -138,7 +138,7 @@ EntityROMSpec CONTROLS_EN =
 	NULL,
 
 	// sprites
-	(SpriteSpec**)CONTROLS_SPRITES,
+	(SpriteSpec**)ColorsBar4Sprites,
 
 	// use z displacement in projection
 	false,
@@ -151,7 +151,7 @@ EntityROMSpec CONTROLS_EN =
 	{0, 0, 0},
 
 	// gameworld's character's type
-	0,
+	kTypeNone,
 
 	// physical specification
 	(PhysicalSpecification*)NULL,

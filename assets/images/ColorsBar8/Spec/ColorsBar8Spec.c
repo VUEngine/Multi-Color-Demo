@@ -1,7 +1,7 @@
 /* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
  * A universal game engine for the Nintendo Virtual Boy
  *
- * Logo (C) 2007, 2018 by Jorge Eremiev<jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
+ * Copyright (C) 2007, 2018 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction, including
@@ -9,12 +9,12 @@
  * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
  *
- * The above Logo notice and this permission notice shall be included in all copies or substantial
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
  * portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
  * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR LOGO HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
@@ -32,44 +32,47 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern BYTE LogoTiles[];
-extern BYTE LogoMap[];
+extern BYTE ColorsBar8Tiles[];
+extern BYTE ColorsBar8_1Map[];
+extern BYTE ColorsBar8_2Map[];
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMSpec LOGO_CH =
+CharSetROMSpec ColorsBar8Charset =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
 	// __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-	62,
+	6,
 
 	// allocation type
 	// (__ANIMATED_SINGLE, __ANIMATED_SINGLE_OPTIMIZED, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
 	__NOT_ANIMATED,
 
 	// char definition
-	LogoTiles,
+	ColorsBar8Tiles,
 };
 
-TextureROMSpec LOGO_TX =
+/* ENTITY 1 */
+
+TextureROMSpec ColorsBar81Texture =
 {
 	// charset definition
-	(CharSetSpec*)&LOGO_CH,
+	(CharSetSpec*)&ColorsBar8Charset,
 
 	// bgmap definition
-	LogoMap,
+	ColorsBar8_1Map,
 
 	// cols (max 64)
-	30,
+	34,
 
 	// rows (max 64)
-	3,
+	14,
 
-	// padding for affine transformations
+	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
 
 	// number of frames, depending on charset's allocation type:
@@ -90,17 +93,17 @@ TextureROMSpec LOGO_TX =
 	false,
 };
 
-BgmapSpriteROMSpec LOGO_SPRITE =
+BgmapSpriteROMSpec ColorsBar81Sprite =
 {
 	{
 		// sprite's type
 		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureSpec*)&LOGO_TX,
+		(TextureSpec*)&ColorsBar81Texture,
 
-		// transparent
-		false,
+		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
+		__TRANSPARENCY_NONE,
 
 		// displacement
 		{0, 0, 0, 0},
@@ -110,20 +113,87 @@ BgmapSpriteROMSpec LOGO_SPRITE =
 	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
 	__WORLD_BGMAP,
 
-	// pointer to affine / hbias manipulation function
+	// pointer to affine/hbias manipulation function
 	NULL,
 
 	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
 	__WORLD_ON,
 };
 
-BgmapSpriteROMSpec* const LOGO_SPRITES[] =
+/* ENTITY 2 */
+
+TextureROMSpec ColorsBar82Texture =
 {
-	&LOGO_SPRITE,
+	// charset definition
+	(CharSetSpec*)&ColorsBar8Charset,
+
+	// bgmap definition
+	ColorsBar8_2Map,
+
+	// cols (max 64)
+	34,
+
+	// rows (max 64)
+	14,
+
+	// padding for affine/hbias transformations (cols, rows)
+	{0, 0},
+
+	// number of frames, depending on charset's allocation type:
+	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*, __NOT_ANIMATED: 1
+	// __ANIMATED_MULTI: total number of frames
+	1,
+
+	// palette number (0-3)
+	0,
+
+	// recyclable
+	false,
+
+	// vertical flip
+	false,
+
+	// horizontal flip
+	false,
+};
+
+BgmapSpriteROMSpec ColorsBar82Sprite =
+{
+	{
+		// sprite's type
+		__TYPE(BgmapSprite),
+
+		// texture definition
+		(TextureSpec*)&ColorsBar82Texture,
+
+		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
+		__TRANSPARENCY_EVEN,
+
+		// displacement
+		{0, 0, 0, 0},
+	},
+
+	// bgmap mode (__WORLD_BGMAP, __WORLD_AFFINE, __WORLD_OBJECT or __WORLD_HBIAS)
+	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
+	__WORLD_BGMAP,
+
+	// pointer to affine/hbias manipulation function
+	NULL,
+
+	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
+	__WORLD_ON,
+};
+
+/* ENTITY */
+
+BgmapSpriteROMSpec* const ColorsBar8Sprites[] =
+{
+	&ColorsBar81Sprite,
+	&ColorsBar82Sprite,
 	NULL
 };
 
-EntityROMSpec LOGO_EN =
+EntityROMSpec ColorsBar8Entity =
 {
 	// class allocator
 	__TYPE(Entity),
@@ -138,7 +208,7 @@ EntityROMSpec LOGO_EN =
 	NULL,
 
 	// sprites
-	(SpriteSpec**)LOGO_SPRITES,
+	(SpriteSpec**)ColorsBar8Sprites,
 
 	// use z displacement in projection
 	false,
@@ -151,7 +221,7 @@ EntityROMSpec LOGO_EN =
 	{0, 0, 0},
 
 	// gameworld's character's type
-	0,
+	kTypeNone,
 
 	// physical specification
 	(PhysicalSpecification*)NULL,

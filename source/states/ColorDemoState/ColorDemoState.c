@@ -38,7 +38,7 @@
 // 												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern StageROMSpec COLOR_DEMO_STAGE_ST;
+extern StageROMSpec ColorDemoStage;
 extern BrightnessRepeatROMSpec GRADIENT_BRIGHTNESS_REPEAT;
 extern BrightnessRepeatROMSpec DEFAULT_BRIGHTNESS_REPEAT;
 
@@ -73,7 +73,7 @@ void ColorDemoState::enter(void* owner __attribute__ ((unused)))
 	Base::enter(this, owner);
 
 	// load stage
-	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&COLOR_DEMO_STAGE_ST, NULL, true);
+	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&ColorDemoStage, NULL, true);
 
 	// get entities
 	this->cbColTabEntity = Entity::safeCast(Container::getChildByName(Container::safeCast(Game::getStage(Game::getInstance())), "CBColTab", true));

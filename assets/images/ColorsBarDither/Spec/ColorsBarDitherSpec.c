@@ -24,84 +24,50 @@
 //												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <libgccvb.h>
-#include <AnimatedEntity.h>
-#include <BgmapAnimatedSprite.h>
-#include <macros.h>
+#include <Entity.h>
+#include <BgmapSprite.h>
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern BYTE CursorsTiles[];
-extern BYTE CursorsMap[];
+extern BYTE ColorsBarDitherTiles[];
+extern BYTE ColorsBarDitherMap[];
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-// a function which defines the frames to play
-AnimationFunctionROMSpec CURSORS_DEFAULT_ANIM =
-{
-	// number of frames of this animation function
-	4,
-
-	// frames to play in animation
-	{0, 1, 2, 1},
-
-	// number of cycles a frame of animation is displayed
-	4,
-
-	// whether to play it in loop or not
-	true,
-
-	// method to call on function completion
-	NULL,
-
-	// function's name
-	"Specault",
-};
-
-// an animation definition
-AnimationDescriptionROMSpec CURSORS_ANIM =
-{
-	// animation functions
-	{
-		(AnimationFunction*)&CURSORS_DEFAULT_ANIM,
-		NULL,
-	}
-};
-
-CharSetROMSpec CURSORS_CH =
+CharSetROMSpec ColorsBarDitherCharset =
 {
 	// number of chars, depending on allocation type:
 	// __ANIMATED_SINGLE*, __ANIMATED_SHARED*: number of chars of a single animation frame (cols * rows)
 	// __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-	96,
+	34,
 
 	// allocation type
 	// (__ANIMATED_SINGLE, __ANIMATED_SINGLE_OPTIMIZED, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
-	__ANIMATED_SHARED,
+	__NOT_ANIMATED,
 
 	// char definition
-	CursorsTiles,
+	ColorsBarDitherTiles,
 };
 
-TextureROMSpec CURSORS_TX =
+TextureROMSpec ColorsBarDitherTexture =
 {
 	// charset definition
-	(CharSetSpec*)&CURSORS_CH,
+	(CharSetSpec*)&ColorsBarDitherCharset,
 
 	// bgmap definition
-	CursorsMap,
+	ColorsBarDitherMap,
 
 	// cols (max 64)
-	48,
+	34,
 
 	// rows (max 64)
-	2,
+	14,
 
 	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
@@ -124,14 +90,14 @@ TextureROMSpec CURSORS_TX =
 	false,
 };
 
-BgmapSpriteROMSpec CURSORS_SPRITE =
+BgmapSpriteROMSpec ColorsBarDitherSprite =
 {
 	{
 		// sprite's type
-		__TYPE(BgmapAnimatedSprite),
+		__TYPE(BgmapSprite),
 
 		// texture definition
-		(TextureSpec*)&CURSORS_TX,
+		(TextureSpec*)&ColorsBarDitherTexture,
 
 		// transparent (__TRANSPARENCY_NONE, __TRANSPARENCY_EVEN or __TRANSPARENCY_ODD)
 		__TRANSPARENCY_NONE,
@@ -151,50 +117,42 @@ BgmapSpriteROMSpec CURSORS_SPRITE =
 	__WORLD_ON,
 };
 
-BgmapSpriteROMSpec* const CURSORS_SPRITES[] =
+BgmapSpriteROMSpec* const ColorsBarDitherSprites[] =
 {
-	&CURSORS_SPRITE,
+	&ColorsBarDitherSprite,
 	NULL
 };
 
-AnimatedEntityROMSpec CURSORS_AE =
+EntityROMSpec ColorsBarDitherEntity =
 {
-	{
-		// class allocator
-		__TYPE(AnimatedEntity),
+	// class allocator
+	__TYPE(Entity),
 
-		// children 
-		NULL,
+	// children 
+	NULL,
 
-		// behaviors 
-		NULL,
+	// behaviors 
+	NULL,
 
-		// extra
-		NULL,
+	// extra
+	NULL,
 
-		// sprites
-		(SpriteSpec**)CURSORS_SPRITES,
+	// sprites
+	(SpriteSpec**)ColorsBarDitherSprites,
 
-		// use z displacement in projection
-		false,
+	// use z displacement in projection
+	false,
 
-		// collision shapes
-		(ShapeSpec*)NULL,
+	// collision shapes
+	(ShapeSpec*)NULL,
 
-		// size
-		// if 0, width and height will be inferred from the first sprite's texture's size
-		{0, 0, 0},
+	// size
+	// if 0, width and height will be inferred from the first sprite's texture's size
+	{0, 0, 0},
 
-		// gameworld's character's type
-		kTypeNone,
+	// gameworld's character's type
+	kTypeNone,
 
-		// physical specification
-		(PhysicalSpecification*)NULL,
-	},
-
-	// pointer to the animation definition for the item
-	(AnimationDescription*)&CURSORS_ANIM,
-
-	// initial animation
-	"Specault",
+	// physical specification
+	(PhysicalSpecification*)NULL,
 };
